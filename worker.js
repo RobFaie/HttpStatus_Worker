@@ -255,9 +255,9 @@ async function handleRequest(request) {
         );
     }
 
-    const sleep = searchParams.get("sleep")
-    if (sleep) {
-        const sleepMs = Number(sleep);
+    const sleepHead = searchParams.get("sleep")
+    if (sleepHead) {
+        const sleepMs = Number(sleepHead);
         await sleep(sleepMs);
     }
 
