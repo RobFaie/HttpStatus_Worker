@@ -4,7 +4,7 @@ main = "worker.js"
 compatibility_date = "2022-07-12"
 
 workers_dev = false
-route = { pattern = "codes.httpauth.dev/*", custom_domain = true }
+route = { pattern = "codes.httpauth.dev/*", zone_name = "httpauth.dev" }
 
 [observability.logs]
 enabled = true
