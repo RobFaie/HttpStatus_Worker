@@ -280,6 +280,14 @@ async function handleRequest(request) {
             headers: headers,
         });
     } else {
-        return new Response(`${httpStatusCode}`, { status: httpStatusCode });
+        var body = null;
+        switch (request.headers.get("Accept")) {
+            case "application/json":
+                body = `{ "code": "${httpStatusCode}", "description": "" }`;
+                break;
+            default:
+                body = `${httpStatusCode}`;
+        }
+        return new Response(body, { status: httpStatusCode });
     }
 }
