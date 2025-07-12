@@ -239,7 +239,7 @@ function sleep(ms) {
  * @returns {Promise<Response>}
  */
 async function handleRequest(request) {
-    const { pathname } = new URL(request.url);
+    const { pathname, searchParams } = new URL(request.url);
     const httpStatusCode = Number(pathname.substring(1));
 
     if (!httpStatusCode) {
@@ -255,8 +255,10 @@ async function handleRequest(request) {
         );
     }
 
-    if (httpStatusCode == 503) {
-        await sleep(5000);
+    const sleep = searchParams.get("sleep")
+    if (sleep) {
+        const sleepMs = Number(sleep);
+        await sleep(sleepMs);
     }
 
     const object = codes[httpStatusCode];

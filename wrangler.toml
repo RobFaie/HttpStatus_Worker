@@ -5,3 +5,7 @@ compatibility_date = "2022-07-12"
 
 workers_dev = false
 route = { pattern = "httpstatus.rob-mc.dev/*", zone_name = "rob-mc.dev" }
+
+[observability.logs]
+enabled = true
+
