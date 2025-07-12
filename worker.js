@@ -228,6 +228,12 @@ const codes = {
     },
 };
 
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
 /**
  * @param {Request} request
  * @returns {Promise<Response>}
@@ -249,8 +255,11 @@ async function handleRequest(request) {
         );
     }
 
-    const object = codes[httpStatusCode];
+    if (httpStatusCode == 503) {
+        await sleep(5000);
+    }
 
+    const object = codes[httpStatusCode];
     if (object) {
         var body = null;
         var headers = new Headers();
