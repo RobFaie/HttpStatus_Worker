@@ -1,7 +1,7 @@
 # Top-level configuration
 name = "hidden-silence-c47a"
 main = "worker.js"
-compatibility_date = "2022-07-12"
+compatibility_date = "2026-11-14"
 
 workers_dev = false
 route = { pattern = "codes.httpauth.dev/*", zone_name = "httpauth.dev" }
@@ -9,3 +9,6 @@ route = { pattern = "codes.httpauth.dev/*", zone_name = "httpauth.dev" }
 [observability.logs]
 enabled = true
 
+[assets]
+directory = "./public"
+run_worker_first = ["/index.html", "/"]
